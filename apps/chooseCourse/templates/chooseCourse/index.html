@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login or Register</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'chooseCourse/css/styles.css' %}" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+  <script type="text/javascript" src="{% static 'chooseCourse/js/script.js' %}"></script>
+
+  </head>
+
+
+  <body>
+      <div id="login">
+      <h1> Login </h1>  
+        {% if messages %}
+      {% for message in messages %}        
+      {% if 'login' in message.tags %}
+    <p>{{message}} </p>
+      {% endif %}
+    {% endfor %}
+    {% endif %}
+      <form action="/login" method="post">
+      {% csrf_token %}
+      <p><label for="email"> Email: </label>
+      <input type="email" name="email"> </p>
+      <p><label for="password"> Password: </label>
+      <input type="password" name="password"> </p>
+      <button>Login</button>
+      </form>
+      </div>
+
+
+      <div id="registration">
+  		<h1> Registration </h1>	
+         {% if messages %}
+      {% for message in messages %}
+        {% if 'register' in message.tags %}
+    <p>{{message}} </p>
+      {% endif %}
+    {% endfor %}
+    {% endif %}
+  		<form action="/register" method="post">
+  		{% csrf_token %}
+  		<p><label for="name"> Name: </label>
+  		<input type="text" name="name"> </p>
+  		<p><label for="email"> Email: </label>
+  		<input type="email" name="email"> </p>
+  		<p><label for="password"> Password: </label>
+  		<input type="password" name="password"> </p>
+  		<p><label for="cfmpwd"> Confirm pw: </label>
+  		<input type="password" name="cfmpwd"> </p>
+  		<button>Register</button>
+  		</form>
+      </div>
+
+</body>
+
+</html>
+
+
+

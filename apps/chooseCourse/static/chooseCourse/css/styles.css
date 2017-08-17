@@ -1,0 +1,22 @@
+#login, #registration{
+	display: inline-block; 
+	text-align: right;
+	width:35%;
+}
+
+#create{
+	display:block;
+	margin:auto;
+	text-align: center;
+	border:2px solid skyblue;
+	border-radius:10px;
+	width:40%;
+	padding:20px;
+	color:darkblue;
+
+}
+
+.center{
+	
+	text-align: center;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login or Register</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'chooseCourse/css/styles.css' %}" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+  <script type="text/javascript" src="{% static 'chooseCourse/js/script.js' %}"></script>
+
+  </head>
+
+
+  <body>
+  <div id="header">
+  	Welcome {{user.name}}
+  <a href="/logout"> Log out </a>
+  </div>
+
+  <h1> Courses I'm Taking </h1>
+  <table>
+  	<tr>
+  	<th> Course Name</th>
+  	<th> Instructor Name </th>
+  	<th> Students </th>
+  	<th> Actions </th>
+  	</tr>
+
+  		{% for course in user.enrolled_courses.all %}
+  		<tr>
+  		<td> {{course.name}}</td>
+  		<td> {{course.instructor.name}}</td>
+  		<td> {{course.students.count}}</td>
+  		<td> <a href="/drop/{{course.id}}"> drop </a></td>
+  		</tr>
+  		{% endfor %}
+  	</table>
+
+
+  <h1> Courses I'm Teaching </h1>
+  <table>
+  	<tr>
+  	<th> Course Name</th>
+  	<th> Students </th>
+  	<th> Actions </th>
+  	</tr>
+
+  		{% for course in user.teaching_courses.all %}
+  		<tr>
+  		<td> {{course.name}}</td>
+  		<td> {{course.students.count}}</td>
+  		<td> <a href="/deleteCourse/{{course.id}}"> Delete </a></td>
+  		</tr>
+  		{% endfor %}
+  	</table>
+
+
+  	<a href="/createCourse"> Create your own course </a>	
+  	<br><a href="/enrollCourse"> Enroll Courses </a>
+
+
+  </body>
+
+  </html>

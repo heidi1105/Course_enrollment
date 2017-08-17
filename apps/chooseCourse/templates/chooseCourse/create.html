@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login or Register</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'chooseCourse/css/styles.css' %}" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+  <script type="text/javascript" src="{% static 'chooseCourse/js/script.js' %}"></script>
+
+  </head>
+
+  <body>
+  	<h1 class="center"> Create a Course </h1>
+
+
+
+
+  	<form id="create" action="/creating" method ='post'>
+  	{% csrf_token %}
+  	<label for="name"> Course Name </label>
+  	<input type="text" name="name"> 
+  	<button> Create </button>
+  	</form>
+
+        {% if messages %}
+      {% for message in messages %}        
+      {% if 'createCourse' in message.tags %}
+    <p>{{message}} </p>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+  	
+  	<p> <a href="/"> Back </a></p>
+
+
+
+
+</body>
+</html>
